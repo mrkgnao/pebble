@@ -2,6 +2,7 @@ module Derivative where
 
 import Expr
 import Functions
+import Simplify
 
 deriv :: Expr -> Expr
 deriv (Const _) = Const 0
@@ -26,3 +27,6 @@ deriv (Apply u e) = (u' e) :* (deriv e)
           case lookup u derivsList of
             (Just g) -> g
             Nothing -> error $ "I don't know how to differentiate " ++ n
+
+derivative :: Expr -> Expr
+derivative = fullSimplify . deriv

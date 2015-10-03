@@ -1,23 +1,49 @@
 
-./Derivative.hs,68
+./Derivative.hs,126
 module Derivative Derivative0,1
-deriv deriv5,6
 deriv deriv6,7
+deriv deriv7,8
+derivative derivative30,31
+derivative derivative31,32
 
-./Functions.hs,245
+./Main.hs,86
+module Main Main0,1
+expr expr7,8
+expr expr8,9
+main main10,11
+main main11,12
+
+./Simplify.hs,112
+module Simplify Simplify0,1
+simplify simplify9,10
+simplify simplify10,11
+fullSimplify fullSimplify58,59
+
+./Functions.hs,450
 module Functions Functions0,1
-ufsin ufsin4,5
-ufcos ufcos5,6
-uflog uflog6,7
-ufexp ufexp7,8
-ufsin' ufsin'9,10
-ufcos' ufcos'10,11
-ufexp' ufexp'11,12
-ufrecip' ufrecip'12,13
-derivsList derivsList14,15
-derivsList derivsList15,16
+csc csc4,5
+sec sec5,6
+cot cot6,7
+ufsin ufsin8,9
+ufcos ufcos9,10
+uftan uftan10,11
+ufsec ufsec11,12
+ufcsc ufcsc12,13
+ufcot ufcot13,14
+uflog uflog14,15
+ufexp ufexp15,16
+ufsin' ufsin'17,18
+ufcos' ufcos'18,19
+uftan' uftan'19,20
+ufcot' ufcot'20,21
+ufsec' ufsec'21,22
+ufcsc' ufcsc'22,23
+ufexp' ufexp'23,24
+ufrecip' ufrecip'24,25
+derivsList derivsList26,27
+derivsList derivsList27,28
 
-./Expr.hs,286
+./Expr.hs,390
 data UnaryFunc UnaryFunc9,10
   UnaryFunc UnaryFunc10,11
 instance instance12,13
@@ -31,3 +57,7 @@ data ExprExpr19,20
   | Expr Expr26,27
   | Expr Expr27,28
   | Apply Apply28,29
+isWrapped isWrapped42,43
+isWrapped isWrapped43,44
+wrapShow wrapShow51,52
+wrapShow wrapShow52,53

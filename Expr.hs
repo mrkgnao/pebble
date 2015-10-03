@@ -14,7 +14,7 @@ instance Eq UnaryFunc where
   (UnaryFunc f n1) == (UnaryFunc g n2) = (n1 == n2)
 
 instance Show UnaryFunc where
-  show (UnaryFunc f n) = show n
+  show (UnaryFunc f n) = n
 
 -- | a is the number type here.
 data Expr
@@ -27,4 +27,29 @@ data Expr
   | Expr :/ Expr
   | Expr :^ Expr
   | Apply UnaryFunc Expr
-  deriving (Show, Eq)
+  deriving Eq
+
+instance Show Expr where
+  show X = "x"
+  show (Const x) = show x
+  show ((:%) x) = "(-" ++ show x ++ ")"
+  show (a :+ b) = wrapShow $ show a ++ " + " ++ show b
+  show (a :- b) = wrapShow $ show a ++ " - " ++ show b
+  show (a :* b) = wrapShow $ show a ++ " * " ++ show b
+  show (a :/ b) = wrapShow $ show a ++ " / " ++ show b
+  show (a :^ b) = wrapShow $ show a ++ " ^ " ++ show b
+  show (Apply uf e) = "(" ++ show uf ++ " " ++ show e ++ ")"
+
+isWrapped :: String -> Bool
+isWrapped [] = False
+isWrapped [_] = False
+isWrapped [x,y] = (x == '(') && (y == ')')
+isWrapped lst =
+  noBrackets (init $ tail lst) && isWrapped [head lst,last lst]
+  where noBrackets xs =
+          0 == (length $ filter (== '(') xs) -- assuming matched parens
+
+wrapShow :: String -> String
+wrapShow str
+  | isWrapped str = str
+  | otherwise = "(" ++ str ++ ")"

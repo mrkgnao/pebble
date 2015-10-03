@@ -1,0 +1,33 @@
+
+./Derivative.hs,68
+module Derivative Derivative0,1
+deriv deriv5,6
+deriv deriv6,7
+
+./Functions.hs,245
+module Functions Functions0,1
+ufsin ufsin4,5
+ufcos ufcos5,6
+uflog uflog6,7
+ufexp ufexp7,8
+ufsin' ufsin'9,10
+ufcos' ufcos'10,11
+ufexp' ufexp'11,12
+ufrecip' ufrecip'12,13
+derivsList derivsList14,15
+derivsList derivsList15,16
+
+./Expr.hs,286
+data UnaryFunc UnaryFunc9,10
+  UnaryFunc UnaryFunc10,11
+instance instance12,13
+data ExprExpr19,20
+  = XX20,21
+  | Const Const21,22
+  | (:(22,23
+  | Expr Expr23,24
+  | Expr Expr24,25
+  | Expr Expr25,26
+  | Expr Expr26,27
+  | Expr Expr27,28
+  | Apply Apply28,29

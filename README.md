@@ -15,6 +15,12 @@ I've implemented:
     * A few trigonometric identities (stuff like `sin x sec x = tan x`) 
     * Basic algebraic identities (`a^0 = 0` etc.)
 
+To use it, clone the repo into a folder and run `Main.hs` in `ghci`:
+
+    $ git clone https://github.com/mrkgnao/pebble.git
+    $ cd pebble
+    $ ghci Main.hs
+
 Examples
 --------
 x^x:

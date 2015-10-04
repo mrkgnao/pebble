@@ -28,5 +28,11 @@ deriv (Apply u e) = fullSimplify $ (u' e) :* (deriv e)
             (Just g) -> g
             Nothing -> error $ "I don't know how to differentiate " ++ n
 
+
+-- | Calculate the derivative of a function and simplify it.
 derivative :: Expr -> Expr
 derivative = fullSimplify . deriv
+
+-- | Calculate the nth derivative of a function.
+nderiv :: Int -> Expr -> Expr
+nderiv n = foldr1 (.) (replicate n derivative)

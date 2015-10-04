@@ -71,6 +71,9 @@ simplify ((Apply f e1) :/ (Apply g e2))
    where lk = lookup (f,g) F.quotList
          (Just fg) = lk
 
+simplify ((Apply f x) :* (Apply g y))
+  | f == g && x == y = ((Apply f x) :^ (Const 2))
+
 simplify (a :/ b) = (simplify a) :/ (simplify b)
 simplify (a :^ b) = (simplify a) :^ (simplify b)
 simplify (a :* b) = (simplify a) :* (simplify b)

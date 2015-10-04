@@ -1,7 +1,10 @@
 module Simplify where
 
+import Data.List
+import Data.Maybe
+
 import Expr
-import Functions
+import qualified Functions as F
 
 -- | Cleans up nonsense like X :^ X :* (X :* ((Const 1.0 :/ X) :* Const 1.0) :+
 -- | Const 1.0 :* Apply "log" X) into (hopefully) nicer expressions like
@@ -49,6 +52,24 @@ simplify (Const a :/ Const b) = Const (a / b)
 simplify (a :/ Const 1) = simplify a
 simplify (a :/ b) | a == b = Const 1
 simplify (a :* (Const b :/ c)) = Const b :* simplify (a :/ c)
+
+-- | Trigonometric inverses
+simplify (k@(Const _) :/ (Apply b e)) 
+ | isJust lk = k :* val (simplify e)
+   where lk = lookup b F.invsList
+         (Just val) = lk
+
+simplify ((Apply f e1) :* (Apply g e2))
+  | e1 == e2 && isJust lk =
+    fg $ simplify e1
+   where lk = lookup (f,g) F.prodList
+         (Just fg) = lk
+
+simplify ((Apply f e1) :/ (Apply g e2))
+  | e1 == e2 && isJust lk =
+    fg $ simplify e1
+   where lk = lookup (f,g) F.quotList
+         (Just fg) = lk
 
 simplify (a :/ b) = (simplify a) :/ (simplify b)
 simplify (a :^ b) = (simplify a) :^ (simplify b)

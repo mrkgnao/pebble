@@ -6,7 +6,7 @@ import Simplify
 import Functions
 
 expr :: Expr
-expr = Apply uflog (Apply ufsin X)
+expr = (Apply ufsin X :/ (Apply ufcos X))
 
 main :: IO ()
-main = print (simplify $ deriv expr)
+main = print (fullSimplify $ expr)

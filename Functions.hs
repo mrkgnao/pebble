@@ -1,5 +1,7 @@
 module Functions where
 
+import Data.Maybe
+
 import Expr
 
 csc x = 1 / sin x
@@ -34,3 +36,28 @@ derivsList =
   ,(ufcsc,ufcsc')
   ,(uflog,ufrecip')
   ,(ufexp,ufexp')]
+
+inv :: UnaryFunc -> UnaryFunc
+inv func
+  | isJust inverse = func'
+  where inverse = lookup func lst''
+        (Just func') = inverse
+
+invsList :: [(UnaryFunc, Expr -> Expr)]
+invsList = map (\(x,y) -> (x,Apply y)) lst''
+lst = [(ufsin,ufcsc),(ufcos,ufsec),(uftan,ufcot)]
+lst' = map (uncurry $ flip (,)) lst
+lst'' = lst ++ lst'
+
+prodList :: [((UnaryFunc, UnaryFunc), Expr -> Expr)]
+prodList =
+  map (\(x,y,z) -> ((x,y),z)) $ prods ++ flipProds ++ consts
+  where prods =
+          [(ufsin,ufsec,Apply uftan),(ufcos,ufcsc,Apply ufcot)]
+        flipProds =
+          map (\(x,y,z) -> (y,x,z)) prods
+        consts =
+          map (\(x,y) -> (x,y,const (Const 1))) lst''
+
+quotList :: [((UnaryFunc, UnaryFunc), Expr -> Expr)]
+quotList = [((ufsin, ufcos), Apply uftan)]

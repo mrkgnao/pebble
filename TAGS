@@ -13,35 +13,46 @@ expr expr8,9
 main main10,11
 main main11,12
 
-./Simplify.hs,112
+./Simplify.hs,113
 module Simplify Simplify0,1
-simplify simplify9,10
-simplify simplify10,11
-fullSimplify fullSimplify58,59
+simplify simplify12,13
+simplify simplify13,14
+fullSimplify fullSimplify79,80
 
-./Functions.hs,450
+./Functions.hs,684
 module Functions Functions0,1
-csc csc4,5
-sec sec5,6
-cot cot6,7
-ufsin ufsin8,9
-ufcos ufcos9,10
-uftan uftan10,11
-ufsec ufsec11,12
-ufcsc ufcsc12,13
-ufcot ufcot13,14
-uflog uflog14,15
-ufexp ufexp15,16
-ufsin' ufsin'17,18
-ufcos' ufcos'18,19
-uftan' uftan'19,20
-ufcot' ufcot'20,21
-ufsec' ufsec'21,22
-ufcsc' ufcsc'22,23
-ufexp' ufexp'23,24
-ufrecip' ufrecip'24,25
-derivsList derivsList26,27
-derivsList derivsList27,28
+csc csc6,7
+sec sec7,8
+cot cot8,9
+ufsin ufsin10,11
+ufcos ufcos11,12
+uftan uftan12,13
+ufsec ufsec13,14
+ufcsc ufcsc14,15
+ufcot ufcot15,16
+uflog uflog16,17
+ufexp ufexp17,18
+ufsin' ufsin'19,20
+ufcos' ufcos'20,21
+uftan' uftan'21,22
+ufcot' ufcot'22,23
+ufsec' ufsec'23,24
+ufcsc' ufcsc'24,25
+ufexp' ufexp'25,26
+ufrecip' ufrecip'26,27
+derivsList derivsList28,29
+derivsList derivsList29,30
+inv inv39,40
+inv inv40,41
+invsList invsList45,46
+invsList invsList46,47
+lst lst47,48
+lst' lst'48,49
+lst'' lst''49,50
+prodList prodList51,52
+prodList prodList52,53
+quotList quotList61,62
+quotList quotList62,63
 
 ./Expr.hs,390
 data UnaryFunc UnaryFunc9,10
